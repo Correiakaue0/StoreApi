@@ -20,3 +20,10 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+/Domain/bin/Debug/net6.0
+/Domain/obj
+/Infra/bin/Debug/net6.0
+/Infra/obj
+/Store/.vs
+/Store/bin/Debug/net6.0
+/Store/obj

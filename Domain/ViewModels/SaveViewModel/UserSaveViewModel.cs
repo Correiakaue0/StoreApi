@@ -1,0 +1,18 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Domain.ViewModels.SaveViewModel
+{
+    public class UserSaveViewModel
+    {
+        public UserSaveViewModel()
+        {
+            Name = string.Empty;
+            Email = string.Empty;
+            Password = string.Empty;
+        }
+
+        [Required(ErrorMessage = "Nome nao pode ser vazio.", AllowEmptyStrings = false)] public string Name { get; set; }
+        [Required(ErrorMessage = "Email nao pode ser vazio.", AllowEmptyStrings = false)] public string Email { get; set; }
+        [Required(ErrorMessage = "Senha nao pode ser vazio.", AllowEmptyStrings = false)] public string Password { get; set; }
+    }
+}
