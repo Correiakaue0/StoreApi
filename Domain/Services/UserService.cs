@@ -35,7 +35,7 @@ namespace Domain.Services
             return new UserReturnViewModel();
         }
 
-        public void Create(UserSaveViewModel userSaveViewModel)
+        public void Create(UserViewModel userSaveViewModel)
         {
             if (string.IsNullOrEmpty(userSaveViewModel.Password)) throw new Exception("Senha não pode ser vazio.");
 
@@ -49,7 +49,7 @@ namespace Domain.Services
             _userRepository.Create(user);
         }
 
-        public void Update(long id, UserSaveViewModel userSaveViewModel)
+        public void Update(long id, UserViewModel userSaveViewModel)
         {
             var user = _userRepository.GetById(id);
             if (user == null) throw new Exception("Usuario não encontrado.");

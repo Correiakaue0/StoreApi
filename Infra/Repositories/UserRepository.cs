@@ -32,6 +32,13 @@ namespace Infra.Repositories
                     select i).FirstOrDefault();
         }
 
+        public User? GetByEmail(string email)
+        {
+            return (from i in _context.Users
+                    where i.Email == email
+                    select i).FirstOrDefault();
+        }
+
         public void Create(User user)
         {
             _context.Users.Add(user);

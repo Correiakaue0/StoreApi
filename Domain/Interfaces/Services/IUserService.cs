@@ -5,10 +5,10 @@ namespace Domain.Interfaces.Services
 {
     public interface IUserService
     {
-        void Create(UserSaveViewModel userSaveViewModel);
+        void Create(UserViewModel userSaveViewModel);
         void Delete(long id);
         IList<UserReturnViewModel> Get();
         UserReturnViewModel? GetById(long id);
-        void Update(long id, UserSaveViewModel userSaveViewModel);
+        void Update(long id, UserViewModel userSaveViewModel);
     }
 }

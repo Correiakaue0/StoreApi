@@ -2,9 +2,9 @@
 
 namespace Domain.ViewModels.SaveViewModel
 {
-    public class UserSaveViewModel
+    public class UserViewModel
     {
-        public UserSaveViewModel()
+        public UserViewModel()
         {
             Name = string.Empty;
             Email = string.Empty;

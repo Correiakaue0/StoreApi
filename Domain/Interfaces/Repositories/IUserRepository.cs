@@ -8,6 +8,7 @@ namespace Domain.Interfaces.Repositories
         void Create(User user);
         void Delete(User user);
         IList<UserReturnViewModel> Get();
+        User? GetByEmail(string email);
         User? GetById(long id);
         void Update(User user);
     }

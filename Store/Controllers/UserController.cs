@@ -1,9 +1,11 @@
 ﻿using Domain.Interfaces.Services;
 using Domain.ViewModels.SaveViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Store.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class UserController : ControllerBase
@@ -30,7 +32,7 @@ namespace Store.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] UserSaveViewModel userSaveViewModel)
+        public IActionResult Create([FromBody] UserViewModel userSaveViewModel)
         {
             try
             {
@@ -44,7 +46,7 @@ namespace Store.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(long id, [FromBody] UserSaveViewModel userSaveViewModel)
+        public IActionResult Update(long id, [FromBody] UserViewModel userSaveViewModel)
         {
             try
             {
