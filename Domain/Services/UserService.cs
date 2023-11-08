@@ -22,11 +22,23 @@ namespace Domain.Services
 
         public UserReturnViewModel? GetById(long id)
         {
-            return _userRepository.GetById(id);
+            var user =_userRepository.GetById(id);
+            if (user != null) 
+                return new UserReturnViewModel
+                {
+                    Id = id,
+                    Email = user.Email,
+                    Name = user.Name,
+                    Password = user.Password
+                };
+
+            return new UserReturnViewModel();
         }
 
         public void Create(UserSaveViewModel userSaveViewModel)
         {
+            if (string.IsNullOrEmpty(userSaveViewModel.Password)) throw new Exception("Senha não pode ser vazio.");
+
             var user = new User
             {
                 Name = userSaveViewModel.Name,
@@ -35,6 +47,25 @@ namespace Domain.Services
             };
 
             _userRepository.Create(user);
+        }
+
+        public void Update(long id, UserSaveViewModel userSaveViewModel)
+        {
+            var user = _userRepository.GetById(id);
+            if (user == null) throw new Exception("Usuario não encontrado.");
+
+            user.Name = userSaveViewModel.Name;
+            user.Email = userSaveViewModel.Email;
+
+            _userRepository.Update(user);
+        }
+
+        public void Delete(long id)
+        {
+            var user = _userRepository.GetById(id);
+            if (user == null) throw new Exception("Usuario não encontrado.");
+
+            _userRepository.Delete(user);
         }
     }
 }

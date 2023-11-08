@@ -1,6 +1,5 @@
 ﻿using Domain.Interfaces.Services;
 using Domain.ViewModels.SaveViewModel;
-using Infra.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Store.Controllers
@@ -45,15 +44,31 @@ namespace Store.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] UserSaveViewModel userSaveViewModel)
+        public IActionResult Update(long id, [FromBody] UserSaveViewModel userSaveViewModel)
         {
-            return Ok();
+            try
+            {
+                _userService.Update(id, userSaveViewModel);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            return Ok();
+            try
+            {
+                _userService.Delete(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

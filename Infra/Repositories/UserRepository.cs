@@ -1,7 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces.Repositories;
 using Domain.ViewModels.ReturnViewModels;
-using Domain.ViewModels.SaveViewModel;
 
 namespace Infra.Repositories
 {
@@ -26,22 +25,28 @@ namespace Infra.Repositories
                     }).ToList();
         }
 
-        public UserReturnViewModel? GetById(long id)
+        public User? GetById(long id)
         {
             return (from i in _context.Users
                     where i.Id == id
-                    select new UserReturnViewModel
-                    {
-                        Id = i.Id,
-                        Name = i.Name,
-                        Email = i.Email,
-                        Password = i.Password,
-                    }).FirstOrDefault();
+                    select i).FirstOrDefault();
         }
 
         public void Create(User user)
         {
             _context.Users.Add(user);
+            _context.SaveChanges();
+        }
+
+        public void Update(User user)
+        {
+            _context.Users.Update(user);
+            _context.SaveChanges();
+        }
+
+        public void Delete(User user)
+        {
+            _context.Users.Remove(user);
             _context.SaveChanges();
         }
     }
