@@ -2,7 +2,7 @@
 using Domain.Interfaces.Services;
 using Domain.ViewModels.ViewModel;
 
-namespace Domain.Services
+namespace Service.Services
 {
     public class LoginService : ILoginService
     {

@@ -16,5 +16,7 @@ namespace Infra
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Brand> Brands { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
-using Domain.Services;
+using Service.Services;
 using Domain.Utils;
 using Infra;
 using Infra.Repositories;
@@ -23,9 +23,13 @@ builder.Services.AddSwaggerGen();
 //Dependency Injection Service
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddScoped<IBrandService, BrandService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 //Dependency Injection Repository
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IBrandRepository, BrandRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 //Dependency Injection SqlContext
 builder.Services.AddScoped<Context, Context>();

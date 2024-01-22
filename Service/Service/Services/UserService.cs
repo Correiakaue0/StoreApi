@@ -4,7 +4,7 @@ using Domain.Interfaces.Services;
 using Domain.ViewModels.ReturnViewModels;
 using Domain.ViewModels.SaveViewModel;
 
-namespace Domain.Services
+namespace Service.Services
 {
     public class UserService : IUserService
     {
@@ -32,7 +32,7 @@ namespace Domain.Services
                     Password = user.Password
                 };
 
-            return new UserReturnViewModel();
+            return null;
         }
 
         public void Create(UserViewModel userSaveViewModel)
