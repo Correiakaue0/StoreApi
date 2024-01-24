@@ -27,3 +27,5 @@ TestResults.xml
 /Store/.vs
 /Store/bin/Debug/net6.0
 /Store/obj
+/Service/bin/Debug/net6.0
+/Service/obj
