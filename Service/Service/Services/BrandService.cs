@@ -17,7 +17,7 @@ namespace Service.Services
 
         public IList<BrandReturnViewModel> Get()
         {
-            return _brandRepository.Get();
+            return _brandRepository.GetBrand();
         }
 
         public BrandReturnViewModel? GetById(long id)

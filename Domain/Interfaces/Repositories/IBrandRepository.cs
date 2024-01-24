@@ -3,12 +3,8 @@ using Domain.ViewModels.ReturnViewModels;
 
 namespace Domain.Interfaces.Repositories
 {
-    public interface IBrandRepository
+    public interface IBrandRepository : IBaseRepository<Brand>
     {
-        void Create(Brand brand);
-        void Delete(Brand brand);
-        IList<BrandReturnViewModel> Get();
-        Brand? GetById(long id);
-        void Update(Brand brand);
+        IList<BrandReturnViewModel> GetBrand();
     }
 }

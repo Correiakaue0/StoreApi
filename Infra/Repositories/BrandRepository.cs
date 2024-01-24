@@ -4,49 +4,19 @@ using Domain.ViewModels.ReturnViewModels;
 
 namespace Infra.Repositories
 {
-    public class BrandRepository : IBrandRepository
+    public class BrandRepository : BaseRepository<Brand>, IBrandRepository 
     {
-        private readonly Context _context;
+        public BrandRepository(Context context) : base(context) { }
 
-        public BrandRepository(Context context)
+        public IList<BrandReturnViewModel> GetBrand()
         {
-            _context = context;
-        }
-
-        public IList<BrandReturnViewModel> Get()
-        {
-            return (from i in _context.Brands
+            return (from i in Get()
                     select new BrandReturnViewModel
                     {
                         Id = i.Id,
                         Code = i.Code,
                         Description = i.Description
                     }).ToList();
-        }
-
-        public Brand? GetById(long id)
-        {
-            return (from i in _context.Brands
-                    where i.Id == id
-                    select i).FirstOrDefault();
-        }
-
-        public void Create(Brand brand)
-        {
-            _context.Brands.Add(brand);
-            _context.SaveChanges();
-        }
-
-        public void Update(Brand brand)
-        {
-            _context.Brands.Update(brand);
-            _context.SaveChanges();
-        }
-
-        public void Delete(Brand brand)
-        {
-            _context.Brands.Remove(brand);
-            _context.SaveChanges();
         }
     }
 }
