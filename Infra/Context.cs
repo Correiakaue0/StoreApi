@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Infra.Mapping;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra
@@ -12,7 +13,9 @@ namespace Infra
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.ApplyConfiguration(new UserMap());
+            modelBuilder.ApplyConfiguration(new BrandMap());
+            modelBuilder.ApplyConfiguration(new ProductMap());
         }
 
         public DbSet<User> Users { get; set; }
