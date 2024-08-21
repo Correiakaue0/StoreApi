@@ -18,7 +18,7 @@ namespace Service.Services
             var user = _userRepository.GetByEmail(loginViewModel.Email);
             if (user == null) throw new Exception("Email não existe.");
 
-            if (user.Password != loginViewModel.Password) throw new Exception("Senha incorreta.");
+            if (!PasswordService.VerifyPassword(loginViewModel.Password, user.Password)) throw new Exception("Senha incorreta.");
 
             return TokenService.GerarToken(user);
         }

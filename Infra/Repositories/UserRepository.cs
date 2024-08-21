@@ -13,7 +13,7 @@ namespace Infra.Repositories
             _context = context;
         }
 
-        public IList<UserReturnViewModel> Get()
+        public IList<UserReturnViewModel> GetAll()
         {
             return (from i in _context.Users
                     select new UserReturnViewModel

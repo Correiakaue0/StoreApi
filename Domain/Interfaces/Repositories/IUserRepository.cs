@@ -7,7 +7,7 @@ namespace Domain.Interfaces.Repositories
     {
         void Create(User user);
         void Delete(User user);
-        IList<UserReturnViewModel> Get();
+        IList<UserReturnViewModel> GetAll();
         User? GetByEmail(string email);
         User? GetById(long id);
         void Update(User user);

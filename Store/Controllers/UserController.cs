@@ -18,9 +18,9 @@ namespace Store.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult GetAll()
         {
-            var users =_userService.Get();
+            var users =_userService.GetAll();
             return Ok(users);
         }
 

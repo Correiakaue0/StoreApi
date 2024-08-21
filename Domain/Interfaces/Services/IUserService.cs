@@ -7,7 +7,7 @@ namespace Domain.Interfaces.Services
     {
         void Create(UserViewModel userSaveViewModel);
         void Delete(long id);
-        IList<UserReturnViewModel> Get();
+        IList<UserReturnViewModel> GetAll();
         UserReturnViewModel? GetById(long id);
         void Update(long id, UserViewModel userSaveViewModel);
     }

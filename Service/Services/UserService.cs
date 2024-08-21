@@ -15,9 +15,9 @@ namespace Service.Services
             _userRepository = userRepository; 
         }
 
-        public IList<UserReturnViewModel> Get()
+        public IList<UserReturnViewModel> GetAll()
         {
-            return _userRepository.Get();
+            return _userRepository.GetAll();
         }
 
         public UserReturnViewModel? GetById(long id)
@@ -39,11 +39,13 @@ namespace Service.Services
         {
             if (string.IsNullOrEmpty(userSaveViewModel.Password)) throw new Exception("Senha não pode ser vazio.");
 
+            if (_userRepository.GetByEmail(userSaveViewModel.Email) != null) throw new Exception("Email já cadastrado.");
+
             var user = new User
             {
                 Name = userSaveViewModel.Name,
                 Email = userSaveViewModel.Email,
-                Password = userSaveViewModel.Password
+                Password = PasswordService.HashPassword(userSaveViewModel.Password)
             };
 
             _userRepository.Create(user);
@@ -53,6 +55,8 @@ namespace Service.Services
         {
             var user = _userRepository.GetById(id);
             if (user == null) throw new Exception("Usuario não encontrado.");
+
+            if(_userRepository.GetByEmail(userSaveViewModel.Email) != null) throw new Exception("Email já cadastrado.");
 
             user.Name = userSaveViewModel.Name;
             user.Email = userSaveViewModel.Email;
