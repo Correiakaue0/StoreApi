@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Store.Controllers
 {
-    [Authorize]
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
+    [Authorize(Roles = "admin")]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;

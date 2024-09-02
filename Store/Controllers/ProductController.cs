@@ -1,11 +1,13 @@
 ﻿using Domain.Interfaces.Services;
 using Domain.ViewModels.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Store.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
+    [Authorize(Roles = "admin, user")]
     public class ProductController : ControllerBase
     {
         public IProductService _productService;

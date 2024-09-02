@@ -17,6 +17,11 @@ namespace Infra.Mapping
                 .HasMaxLength(50)
                 .IsRequired();
 
+            builder.Property(u => u.Role)
+                .HasColumnName("Role")
+                .HasMaxLength(50)
+                .IsRequired();
+
             builder.Property(u => u.Email)
                 .HasColumnName("Email")
                 .HasMaxLength(100)

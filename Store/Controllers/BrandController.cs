@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Store.Controllers
 {
-    [Authorize]
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
+    [Authorize(Roles = "admin, user")]
     public class BrandController : ControllerBase
     {
         private readonly IBrandService _brandService;
