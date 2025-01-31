@@ -29,6 +29,7 @@ namespace Service.Services
                     Id = id,
                     Email = user.Email,
                     Name = user.Name,
+                    Role = user.Role,
                     Password = user.Password
                 };
 
@@ -45,6 +46,7 @@ namespace Service.Services
             {
                 Name = userSaveViewModel.Name,
                 Email = userSaveViewModel.Email,
+                Role = "user",
                 Password = PasswordService.HashPassword(userSaveViewModel.Password)
             };
 

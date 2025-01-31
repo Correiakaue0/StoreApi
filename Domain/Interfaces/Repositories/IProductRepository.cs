@@ -1,9 +1,10 @@
-﻿using Domain.ViewModels.ReturnViewModels;
+﻿using Domain.Entities;
+using Domain.ViewModels.ReturnViewModels;
 
 namespace Domain.Interfaces.Repositories
 {
-    public interface IProductRepository
+    public interface IProductRepository : IBaseRepository<Product>
     {
-        IList<ProductReturnViewModel> Get();
+        IList<ProductReturnViewModel> GetProduct();
     }
 }

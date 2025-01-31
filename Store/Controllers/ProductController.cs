@@ -36,7 +36,8 @@ namespace Store.Controllers
         {
             try
             {
-                return Ok();
+                var products = _productService.GetById(id);
+                return Ok(products);
             }
             catch (Exception ex)
             {
@@ -49,6 +50,7 @@ namespace Store.Controllers
         {
             try
             {
+                _productService.Create(productViewModel);
                 return Ok();
             }
             catch (Exception ex)
@@ -62,6 +64,7 @@ namespace Store.Controllers
         {
             try
             {
+                _productService.Update(id, productViewModel);
                 return Ok();
             }
             catch (Exception ex)
@@ -75,6 +78,7 @@ namespace Store.Controllers
         {
             try
             {
+                _productService.Delete(id);
                 return Ok();
             }
             catch (Exception ex)

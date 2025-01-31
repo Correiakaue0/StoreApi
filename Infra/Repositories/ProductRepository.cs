@@ -1,27 +1,23 @@
-﻿using Domain.Interfaces.Repositories;
+﻿using Domain.Entities;
+using Domain.Interfaces.Repositories;
 using Domain.ViewModels.ReturnViewModels;
 
 namespace Infra.Repositories
 {
-    public class ProductRepository : IProductRepository
+    public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
-        private readonly Context _context;
+        public ProductRepository(Context context) : base(context) { }
 
-        public ProductRepository(Context context)
+        public IList<ProductReturnViewModel> GetProduct()
         {
-            _context = context;
-        }
-
-        public IList<ProductReturnViewModel> Get()
-        {
-            return (from i in _context.Products
+            return (from i in Get()
                     select new ProductReturnViewModel
                     {
                         Id = i.Id,
                         Name = i.Name,
                         Description = i.Description,
                         Price = i.Price,
-                        BrandId = i.BrandId
+                        BrandId = i.BrandId,
                     }).ToList();
         }
     }

@@ -48,8 +48,7 @@ namespace Service.Services
 
         public void Update(long id, BrandViewModel brandViewModel)
         {
-            var brand = _brandRepository.GetById(id);
-            if (brand == null) throw new Exception("Marca não encontrado.");
+            var brand = _brandRepository.GetById(id) ?? throw new Exception("Marca não encontrado.");
 
             brand.Code = brandViewModel.Code;
             brand.Description = brandViewModel.Description;
@@ -59,9 +58,7 @@ namespace Service.Services
 
         public void Delete(long id)
         {
-            var brand = _brandRepository.GetById(id);
-            if (brand == null) throw new Exception("Marca não encontrado.");
-
+            var brand = _brandRepository.GetById(id) ?? throw new Exception("Marca não encontrado.");
             _brandRepository.Delete(brand);
         }
     }
