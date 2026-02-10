@@ -6,7 +6,7 @@ using Domain.ViewModels.ViewModel;
 
 namespace Service.Services
 {
-    public class ProductService : IProductService
+    public class ProductService : BaseService, IProductService
     {
         public IProductRepository _productRepository;
         public IBrandRepository _brandRepository;
@@ -41,7 +41,7 @@ namespace Service.Services
 
         public void Create(ProductViewModel productViewModel)
         {
-            var brand = _brandRepository.GetById(productViewModel.BrandId) ?? throw new Exception("Marca não encontrado.");
+            var brand = _brandRepository.GetById(productViewModel.BrandId) ?? throw new Exception(MessageNotFound<Brand>());
 
             var product = new Product
             {
@@ -56,9 +56,9 @@ namespace Service.Services
 
         public void Update(long id, ProductViewModel productViewModel)
         {
-            var product = _productRepository.GetById(id) ?? throw new Exception("Produto não encontrado.");
+            var product = _productRepository.GetById(id) ?? throw new Exception(MessageNotFound<Product>());
 
-            var brand = _brandRepository.GetById(productViewModel.BrandId) ?? throw new Exception("Marca não encontrado.");
+            var brand = _brandRepository.GetById(productViewModel.BrandId) ?? throw new Exception(MessageNotFound<Brand>());
 
             product.Name = productViewModel.Name;
             product.Description = productViewModel.Description;
@@ -70,7 +70,7 @@ namespace Service.Services
 
         public void Delete(long id)
         {
-            var product = _productRepository.GetById(id) ?? throw new Exception("Pruduto não encontrado.");
+            var product = _productRepository.GetById(id) ?? throw new Exception(MessageNotFound<Product>());
 
             _productRepository.Delete(product);
         }

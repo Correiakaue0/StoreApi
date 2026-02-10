@@ -33,6 +33,10 @@ namespace Infra.Mapping
                 .HasColumnName("Password")
                 .HasMaxLength(100)
                 .IsRequired();
+
+            builder.Property(u => u.Language)
+                .HasColumnName("Language")
+                .IsRequired();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities
+﻿using Domain.Enum;
+
+namespace Domain.Entities
 {
     public class User
     {
@@ -8,6 +10,7 @@
             Role = string.Empty;
             Email = string.Empty;
             Password = string.Empty;
+            Language = EnumLanguage.Portuguese;
         }
 
         public long Id { get; set; }
@@ -15,5 +18,6 @@
         public string Role { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        public EnumLanguage Language { get; set; }
     }
 }
