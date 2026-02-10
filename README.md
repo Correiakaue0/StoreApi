@@ -13,6 +13,7 @@ Este é um projeto de API desenvolvida em **C#** utilizando os princípios do **
 - [BCrypt.Net](https://github.com/BcryptNet/bcrypt.net)
 - [Serilog](https://serilog.net/)
 - [DDD (Domain-Driven Design)](https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/common-web-application-architectures#domain-driven-design)
+- [MyMemory Translation API (Open Source)](https://translatedlabs.com/mymemory-pt)
 
 ---
 
@@ -37,6 +38,16 @@ O projeto segue a estrutura baseada em DDD, separando responsabilidades em difer
 
 ---
 
+## 🌍 Sistema de Tradução de Mensagens (i18n)
+A API conta com um sistema de tradução de mensagens de erro e sucesso, permitindo que as respostas dos endpoints sejam retornadas no idioma desejado pelo cliente.
+
+### 🎯 Objetivo
+
+- Padronizar mensagens de retorno.
+- Facilitar internacionalização da API.
+- Melhorar a experiência de consumo por aplicações front-end e mobile.
+
+---
 ## 📄 Principais Funcionalidades
 
 - ✅ CRUD completo com EF Core
